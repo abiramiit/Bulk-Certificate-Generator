@@ -8,5 +8,3 @@ storage/
 alembic/versions/*.pyc
 data/
 *.pdf
-data/
-*.pdf
