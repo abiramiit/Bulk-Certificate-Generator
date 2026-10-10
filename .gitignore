@@ -1,10 +1,11 @@
 venv/
+.venv/
 __pycache__/
 *.pyc
 .env
 .pytest_cache/
 /storage/
 *.db
-alembic/versions/*.pyc
-data/
+/data/
 *.pdf
+.ruff_cache/
