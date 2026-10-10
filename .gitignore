@@ -6,3 +6,5 @@ __pycache__/
 storage/
 *.db
 alembic/versions/*.pyc
+data/
+*.pdf
