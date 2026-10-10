@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: bulk-certificate-generator
+    env: docker
+    plan: free
+    healthCheckPath: /health
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:////data/app.db
+      - key: STORAGE_DIR
+        value: /data/storage
+      - key: PORT
+        value: 8000
