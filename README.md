@@ -92,3 +92,9 @@ curl -X 'GET' 'http://127.0.0.1:8000/api/v1/jobs/<job-uuid>/certificates' --outp
 ## Known Limitations
 - Background Tasks die if the Application restarts unexpectedly. Migration to an external queue (Celery/ARQ) is mandatory for HA setups.
 - SQLite does not support high concurrency out-of-the-box well, production deployments should change `DATABASE_URL` to point to a PostgreSQL DB. Table migrations are already fully setup for this natively via Alembic configurations.
+
+## Deployment
+- **Live URL**: `https://bulk-certificate-generator-ti7o.onrender.com`
+- **Platform**: Render free tier, Docker runtime
+- **Storage limitation**: The free tier provides no persistent disk. The SQLite database and generated PDFs are stored in `/tmp` and are lost on restart, redeploy, or inactivity. This is acceptable for a demo, but a production version must configure managed PostgreSQL and S3-compatible object storage.
+- **Cold start**: The first request after the application has been idle can take 30 to 60 seconds.
