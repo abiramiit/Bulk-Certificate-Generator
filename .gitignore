@@ -9,3 +9,5 @@ __pycache__/
 /data/
 *.pdf
 .ruff_cache/
+*.txt
+payload.json

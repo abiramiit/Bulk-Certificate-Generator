@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.exceptions import RequestValidationError
 from sqlalchemy import text
 from app.core.config import settings
@@ -37,6 +37,10 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(title=settings.PROJECT_NAME, lifespan=lifespan)
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/health")
 def health_check():
